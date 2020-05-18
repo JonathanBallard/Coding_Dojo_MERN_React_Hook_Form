@@ -3,11 +3,13 @@ import React, { useState } from 'react';
 import FormField from './FormField'
 
 const Form = props => {
-    const [state1, setState1] = useState(0);
-    const [state2, setState2] = useState(0);
-    const [state3, setState3] = useState(0);
-    const [state4, setState4] = useState(0);
-    const [state5, setState5] = useState(0);
+    const [state, setState] = useState({
+        first_name: "",
+        last_name: "",
+        email: "",
+        password: "",
+        cpassword: "",
+    })
 
     const field1 = {
         labelName: "first_name",
@@ -50,33 +52,33 @@ const Form = props => {
         <>
             <form onSubmit = { e => e.preventDefault() } >
                 <div>
-                    <label for={field1.labelName}>{field1.labelValue}</label>
-                    <input name={field1.labelName} type={field1.inputType} onChange= { e => setState1({field1: e.target.value}) }></input>
+                    <label htmlFor={field1.labelName}>{field1.labelValue}</label>
+                    <input name={field1.labelName} type={field1.inputType} onChange= { e => setState({...state, [e.target.name]: e.target.value}) }></input>
                 </div>
                 <div>
-                    <label for={field2.labelName}>{field2.labelValue}</label>
-                    <input name={field2.labelName} type={field2.inputType} onChange= { e => setState2({field2: e.target.value}) } ></input>
+                    <label htmlFor={field2.labelName}>{field2.labelValue}</label>
+                    <input name={field2.labelName} type={field2.inputType} onChange= { e => setState({...state, [e.target.name]: e.target.value}) } ></input>
                 </div>
                 <div>
-                    <label for={field3.labelName}>{field3.labelValue}</label>
-                    <input name={field3.labelName} type={field3.inputType} onChange= { e => setState3({field3: e.target.value}) } ></input>
+                    <label htmlFor={field3.labelName}>{field3.labelValue}</label>
+                    <input name={field3.labelName} type={field3.inputType} onChange= { e => setState({...state, [e.target.name]: e.target.value}) } ></input>
                 </div>
                 <div>
-                    <label for={field4.labelName}>{field4.labelValue}</label>
-                    <input name={field4.labelName} type={field4.inputType} value={state4.field4} onChange= { e => setState4({field4: e.target.value}) } ></input>
+                    <label htmlFor={field4.labelName}>{field4.labelValue}</label>
+                    <input name={field4.labelName} type={field4.inputType} onChange= { e => setState({...state, [e.target.name]: e.target.value}) } ></input>
                 </div>
                 <div>
-                    <label for={field5.labelName}>{field5.labelValue}</label>
-                    <input name={field5.labelName} type={field5.inputType} onChange= { e => setState5({field5: e.target.value}) } ></input>
+                    <label htmlFor={field5.labelName}>{field5.labelValue}</label>
+                    <input name={field5.labelName} type={field5.inputType} onChange= { e => setState({...state, [e.target.name]: e.target.value}) } ></input>
                 </div>
                 <input type="Submit" value="Submit"></input>
             </form>
             <div>
-                <p>First Name: {state1.field1}</p>
-                <p>Last Name: {state2.field2}</p>
-                <p>Email: {state3.field3}</p>
-                <p>Password: {state4.field4}</p>
-                <p>Confirm Password: {state5.field5}</p>
+                <p>First Name: {state.first_name}</p>
+                <p>Last Name: {state.last_name}</p>
+                <p>Email: {state.email}</p>
+                <p>Password: {state.password}</p>
+                <p>Confirm Password: {state.cpassword}</p>
             </div>
         </>
     )
